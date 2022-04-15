@@ -9,13 +9,14 @@ body {
   margin: 50px;
 }
 
-
 #search-bar {
   margin-bottom: 20px;
+  width: 100%;
 
   input {
     font-size: 1.5em;
     border-radius: .25em;
+    width: 50%;
   }
 }
 
@@ -24,17 +25,37 @@ body {
 }
 
 #video-section {
+  width: 70%;
   display: flex;
 
   li {
     list-style: none;
     cursor: pointer;
     display: flex;
-    width: 25vw;
+    width: 75vw;
     padding: 10px;
   }
   li:hover {
     background: darken( $backgroundcolor, 10% );
   }
 
+}
+
+#video-title {
+  font-size: 36px;
+}
+
+.details {
+  padding-bottom: 50px;
+}
+
+.list-info {
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
 }
