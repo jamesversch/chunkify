@@ -1,44 +1,62 @@
 import React, { Component } from 'react';
 import { createRoot } from 'react-dom/client';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  NavLink,
+  useParams,
+} from 'react-router-dom';
 import './style.scss';
-import debounce from 'lodash.debounce';
-import SearchBar from './components/search_bar';
-import youtubeSearch from './youtube-api';
-import VideoList from './components/video_list';
-import VideoDetail from './components/video_detail';
+
+const About = (props) => {
+  return <div> All there is to know about me </div>;
+};
+const Welcome = (props) => {
+  return <div>Welcome</div>;
+};
+const Nav = (props) => {
+  return (
+    <nav>
+      <ul>
+        <li><NavLink to="/" exact>Home</NavLink></li>
+        <li><NavLink to="/about">About</NavLink></li>
+        <li><NavLink to="/test/id1">test id1</NavLink></li>
+        <li><NavLink to="/test/id2">test id2</NavLink></li>
+      </ul>
+    </nav>
+  );
+};
+
+const Test = (props) => {
+  const { id } = useParams();
+  return <div> ID: {id} </div>;
+};
+
+const FallBack = (props) => {
+  return <div>URL Not Found</div>;
+};
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      videos: [],
-      selectedVideo: null,
-    };
-    this.search = debounce(this.search, 300);
-    this.search('pixar');
+    this.state = {};
   }
-
-  search = (text) => {
-    youtubeSearch(text).then((videos) => {
-      this.setState({
-        videos,
-        selectedVideo: videos[0],
-      });
-    });
-  };
 
   render() {
     return (
-      <div>
-        <SearchBar id="search-bar" onSearchChange={this.search} />
-        <div id="video-section">
-          <VideoDetail video={this.state.selectedVideo} />
+      <BrowserRouter>
+        <div>
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/test/:id" element={<Test />} />
+            <Route path="*" element={<FallBack />} />
+          </Routes>
         </div>
-        <div id="video-section">
-          <VideoList onVideoSelect={(selectedVideo) => this.setState({ selectedVideo })} videos={this.state.videos} />
-        </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }
