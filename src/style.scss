@@ -1,0 +1,65 @@
+$fontcolor:  rgb(10%, 10%, 10%);
+$backgroundcolor: rgb(98%, 98%, 98%);
+
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: $fontcolor;
+  background-color: $backgroundcolor;
+  margin: 50px;
+}
+
+#search-bar {
+  margin-bottom: 20px;
+  width: 100%;
+
+  input {
+    font-size: 1.5em;
+    border-radius: .25em;
+    width: 50%;
+  }
+}
+
+#video-detail {
+  width: 100%;
+}
+
+#video-section {
+  width: 70%;
+  display: flex;
+
+  li {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    width: 75vw;
+    padding: 10px;
+  }
+  li:hover {
+    background: darken( $backgroundcolor, 10% );
+  }
+
+}
+
+#video-title {
+  font-size: 36px;
+}
+
+.details {
+  padding-bottom: 50px;
+}
+
+.list-info {
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.active {
+  color: pink;
+}
